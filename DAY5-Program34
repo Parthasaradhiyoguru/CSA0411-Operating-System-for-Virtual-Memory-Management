@@ -1,0 +1,23 @@
+int main() {   
+struct disk d;  
+init_disk(&d, 10);  
+struct file *f1 = allocate_file(&d, "file1", 3);  
+if (f1 == NULL) {  
+printf("Could not allocate space for file1\n");  
+exit(1);  
+}  
+struct file *f2 = allocate_file(&d, "file2", 5);  
+if (f2 == NULL) {  
+printf("Could not allocate space for file2\n");  
+exit(1);  
+}  
+free_file(&d, f1);  
+struct file *f3 = allocate_file(&d, "file3", 4);  
+if (f3 == NULL) {  
+printf("Could not allocate space for file3\n");  
+exit(1);  
+}  
+free_file(&d, f2);  
+free_file(&d, f3);  
+return 0;  
+}  
